@@ -1,261 +1,480 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md Abdullah | CV Portfolio</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Md Abdullah — CV Portfolio</title>
+<meta name="description" content="Md Abdullah Ibna Al Kader Maruf — Electrical & Electronic Engineering — CV portfolio" />
 
+<!-- Fonts: using system stack and fallback (no external downloads) -->
 <style>
-/* ---------- GLOBAL ---------- */
-*{
-  margin:0;padding:0;box-sizing:border-box;
-  font-family: "Poppins", sans-serif;
-}
-body{
-  background:#0d1117;
-  color:white;
-  line-height:1.6;
-}
-a{color:#58a6ff;text-decoration:none;}
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-}
+  :root{
+    --bg-1: linear-gradient(180deg,#071026 0%, #071528 100%);
+    --glass: rgba(255,255,255,0.04);
+    --glass-2: rgba(255,255,255,0.02);
+    --accent: #6ee7b7;
+    --accent-2: #60a5fa;
+    --muted: #99a3b2;
+    --card-radius:16px;
+    --max-width:1100px;
+    --accent-strong: #38bdf8;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; background:var(--bg-1); color:#e8f0fb; -webkit-font-smoothing:antialiased;}
+  a{color:var(--accent-strong);text-decoration:none}
+  .wrap{max-width:var(--max-width);margin:28px auto;padding:20px;display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;}
+  @media (max-width:980px){ .wrap{grid-template-columns:1fr;padding:18px} }
 
-/* ---------- HEADER ---------- */
-header{
-  padding:60px 0;
-  text-align:center;
-}
-header h1{
-  font-size:38px;
-  font-weight:700;
-}
-header p{
-  font-size:18px;
-  color:#c9d1d9;
-  margin-top:10px;
-}
-.badge{
-  display:inline-block;
-  background:#21262d;
-  padding:6px 14px;
-  border-radius:20px;
-  margin:5px;
-  border:1px solid #30363d;
-  font-size:14px;
-}
+  /* HERO CARD */
+  .hero{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:var(--card-radius);
+    padding:22px;
+    box-shadow: 0 20px 60px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+    overflow:hidden;
+    position:relative;
+  }
 
-/* ---------- SECTION GENERIC ---------- */
-section{
-  background:#161b22;
-  padding:35px;
-  border-radius:14px;
-  margin-bottom:28px;
-  border:1px solid #21262d;
-}
-section h2{
-  font-size:24px;margin-bottom:18px;color:#58a6ff;
-}
+  .hero-head{display:flex;gap:18px;align-items:center}
+  .photo{
+    width:108px;height:108px;border-radius:14px;flex-shrink:0;overflow:hidden;background:linear-gradient(135deg,var(--accent-2),var(--accent));
+    display:grid;place-items:center;border:1px solid rgba(255,255,255,0.03);
+    transform:translateZ(0); /* keep crisp */
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-title h1{font-size:26px;margin:0 0 6px 0;letter-spacing:0.2px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:6px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .chip{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.02);font-weight:700;font-size:13px}
 
-/* ---------- GRID CARDS ---------- */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-}
-.card{
-  background:#0d1117;
-  padding:20px;
-  border-radius:12px;
-  border:1px solid #21262d;
-  transition:0.2s;
-}
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#58a6ff;
-}
+  /* modern stats row */
+  .stats{display:flex;gap:12px;margin-top:16px}
+  .stat{flex:1;background:var(--glass);padding:12px;border-radius:12px;text-align:center;border:1px solid rgba(255,255,255,0.02)}
+  .stat strong{display:block;font-size:16px}
+  .stat span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
 
-/* ---------- TAGS ---------- */
-.tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:10px;
-}
-.tag{
-  background:#21262d;
-  padding:6px 12px;
-  border-radius:20px;
-  border:1px solid #30363d;
-  font-size:14px;
-}
+  /* sections */
+  .section{margin-top:18px}
+  .sec-head{display:flex;align-items:center;gap:12px}
+  .sec-head h2{font-size:18px;margin:0;color:var(--accent-strong)}
+  .sec-sub{color:var(--muted);font-size:13px}
 
-/* ---------- FOOTER ---------- */
-footer{
-  padding:25px 0;
-  text-align:center;
-  color:#8b949e;
-  font-size:14px;
-}
+  /* grid cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.02);
+  }
+  .card h3{margin:0;font-size:15px}
+  .card p{margin:8px 0 0 0;color:var(--muted);font-size:13px;line-height:1.45}
 
-/* ---------- MOBILE ---------- */
-@media(max-width:600px){
-  header h1{font-size:28px;}
-}
+  /* skills */
+  .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .skill{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:8px 12px;border-radius:10px;font-weight:700;border:1px solid rgba(255,255,255,0.02);font-size:13px}
+
+  /* projects */
+  .project{display:flex;flex-direction:column;gap:8px}
+  .project .meta{color:var(--muted);font-size:13px}
+
+  /* timeline */
+  .timeline{margin-top:12px;border-left:2px dashed rgba(255,255,255,0.03);padding-left:14px}
+  .timeline-item{padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+  .timeline-item:last-child{border-bottom:0}
+  .when{font-weight:800;color:var(--accent-strong);font-size:13px}
+  .what{color:#e7eefb;margin-top:6px}
+
+  /* side panel */
+  .side{
+    position:relative;
+    top:0;
+  }
+  .side-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 12px 36px rgba(2,6,23,0.55);
+  }
+  .contact-line{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
+  .contact-left{display:flex;flex-direction:column;gap:4px}
+  .contact-item{display:flex;align-items:center;gap:10px}
+  .contact-label{color:var(--muted);font-size:13px}
+  .contact-value{font-weight:800}
+  .copy-btn{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px;border-radius:10px;color:var(--muted);cursor:pointer;font-weight:700}
+  .copy-btn:active{transform:translateY(1px)}
+  .quick-actions{display:flex;gap:10px;margin-top:12px}
+
+  .download{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#06202a;padding:10px 12px;border-radius:10px;border:0;font-weight:900;cursor:pointer;width:100%;
+  }
+
+  /* subtle entrance animation */
+  .fade-in{animation:fadeUp .6s cubic-bezier(.2,.9,.2,1) both}
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(8px)}
+    to{opacity:1; transform:none}
+  }
+
+  /* floating action bar (mobile friendly) */
+  .fab{
+    position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#022; padding:12px;border-radius:999px;box-shadow:0 10px 30px rgba(6,182,212,0.08);border:0;font-weight:900;z-index:60;cursor:pointer;
+  }
+  .small-muted{color:var(--muted);font-size:13px}
+  /* avatars fallback */
+  .avatar-fallback{width:100%;height:100%;display:grid;place-items:center;color:#021124;font-weight:900;font-size:28px}
 </style>
 </head>
 <body>
+  <div class="wrap" role="main">
 
-<header>
-  <h1>Md Abdullah Ibna Al Kader Maruf</h1>
-  <p>Electrical & Electronic Engineering (EEE) — Independent University, Bangladesh</p>
-  <div class="badge">Email: maruf.27oct2004@gmail.com</div>
-  <div class="badge">Phone: 01969682036</div>
-  <div class="badge">Address: 153/1 North Vasantek, Dhaka Cantonment</div>
-</header>
+    <!-- LEFT / Main -->
+    <div>
+      <section class="hero fade-in" aria-labelledby="name">
+        <div class="hero-head">
+          <div class="photo" id="photoWrap" title="Profile photo (pic.jpg)">
+            <!-- Image element: uses pic.jpg from same folder; fallback to initials -->
+            <img id="profileImg" src="pic.jpg" alt="Md Abdullah photo" onerror="imgFallback()" />
+          </div>
+          <div class="hero-title">
+            <h1 id="name">Md Abdullah Ibna Al Kader Maruf</h1>
+            <div class="sub">Undergraduate — Electrical & Electronic Engineering · Independent University, Bangladesh</div>
+            <div class="chips" aria-hidden="true">
+              <span class="chip">CGPA 3.81</span>
+              <span class="chip">Research Assistant</span>
+              <span class="chip">Teaching Assistant</span>
+            </div>
+          </div>
+        </div>
 
-<div class="container">
+        <div class="stats" role="list" aria-label="quick stats">
+          <div class="stat" role="listitem">
+            <strong>3.81</strong>
+            <span>CGPA</span>
+          </div>
+          <div class="stat" role="listitem">
+            <strong>Research</strong>
+            <span>PPG | Smart Energy</span>
+          </div>
+          <div class="stat" role="listitem">
+            <strong>Projects</strong>
+            <span>Smart Car Tracking</span>
+          </div>
+        </div>
 
-<!-- EDUCATION -->
-<section>
-  <h2>Education</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>BSc in Electrical & Electronic Engineering</h3>
-      <p>Independent University, Bangladesh</p>
-      <p><strong>CGPA:</strong> 3.81</p>
-      <p><strong>Years:</strong> 2024–2028</p>
+        <div class="section">
+          <div class="sec-head"><h2>About</h2><div class="sec-sub">Profile summary</div></div>
+          <p class="small-muted" style="margin-top:10px">
+            Motivated EEE undergraduate with hands-on research experience in biomedical signal processing (PPG), smart energy systems, and IoT-driven vehicle monitoring. Strong foundation in Python, embedded systems, and full-stack app development.
+          </p>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="fade-in section" aria-labelledby="projects">
+        <div class="sec-head"><h2 id="projects">Projects</h2><div class="sec-sub">Selected work</div></div>
+        <div class="cards">
+          <div class="card project">
+            <h3>PPG-based Smart Heart Monitoring System</h3>
+            <div class="meta small-muted">Heart rate, pulse, blood-glucose & dengue detection (research)</div>
+            <p class="what">Extracted red-channel PPG from video, processed offline to derive pulse signal and heart-rate trending.</p>
+          </div>
+
+          <div class="card project">
+            <h3>Smart Energy Monitoring System</h3>
+            <div class="meta small-muted">Remote energy / power factor monitoring</div>
+            <p class="what">End-to-end IoT system for measuring and reporting voltage, current, power factor and cost.</p>
+          </div>
+
+          <div class="card project">
+            <h3>Smart Car Tracking</h3>
+            <div class="meta small-muted">Real-time stream & GPS</div>
+            <p class="what">Real-time in-car monitoring for driver safety with live streaming and location tracking.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience timeline -->
+      <section class="fade-in section" aria-labelledby="experience">
+        <div class="sec-head"><h2 id="experience">Experience</h2><div class="sec-sub">Roles & Campus work</div></div>
+
+        <div class="timeline" role="list">
+          <div class="timeline-item" role="listitem">
+            <div class="when">March 2025 — Present</div>
+            <div class="what"><strong>Research Assistant</strong> — Supervisor: Dr. Feroz Ahmed. Projects: PPG, Smart Energy, Car Tracking.</div>
+          </div>
+
+          <div class="timeline-item" role="listitem">
+            <div class="when">May 2025 — Dec 2025</div>
+            <div class="what"><strong>Teaching Assistant</strong> — Electronics-I (EEE221). Lab help & mentoring.</div>
+          </div>
+
+          <div class="timeline-item" role="listitem">
+            <div class="when">Jan 2025 — Dec 2025</div>
+            <div class="what"><strong>Campus Job — Library (SoD)</strong> — Digital archive & facility assistance.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="fade-in section" aria-labelledby="education">
+        <div class="sec-head"><h2 id="education">Education</h2><div class="sec-sub">Academic record</div></div>
+
+        <div class="cards" style="margin-top:12px">
+          <div class="card">
+            <h3>BSc — Electrical & Electronic Engineering</h3>
+            <p class="small-muted">Independent University, Bangladesh · 2024–2028 · CGPA: 3.81 (Credits: 58)</p>
+          </div>
+          <div class="card">
+            <h3>HSC</h3>
+            <p class="small-muted">Cantonment Public School & College · 2020–2022 · GPA: 5.00</p>
+          </div>
+          <div class="card">
+            <h3>SSC</h3>
+            <p class="small-muted">Cantonment Board High School · 2018–2020 · GPA: 4.78</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications & Extracurricular -->
+      <section class="fade-in section" aria-labelledby="more">
+        <div class="sec-head"><h2 id="more">Certifications & Extras</h2><div class="sec-sub">Awards, certs & activities</div></div>
+
+        <div class="cards" style="margin-top:12px">
+          <div class="card">
+            <h3>Selected Certifications</h3>
+            <p class="small-muted">Electronics-I Best Project — 1st · IEEE IUB Innovation Fest — Best Volunteer · RC Car Competition — 3rd</p>
+            <p class="small-muted" style="margin-top:8px">BTEB Computer Office App (A+) · Kaggle: Python · W3Schools: C++, Java · UN/UNICEF courses</p>
+          </div>
+
+          <div class="card">
+            <h3>Extracurricular</h3>
+            <p class="small-muted">IEEE IUB (Event Coordinator) · IUB Debate Club · Photography Club · Duke of Edinburgh (Gold) · IUB Rover Scout Group</p>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <div class="card">
-      <h3>HSC</h3>
-      <p>Cantonment Public School & College</p>
-      <p><strong>GPA:</strong> 5.00</p>
-      <p><strong>Years:</strong> 2020–2022</p>
-    </div>
+    <!-- RIGHT SIDE panel -->
+    <aside class="side">
+      <div class="side-card fade-in" aria-labelledby="contact">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+          <div>
+            <h2 id="contact" style="margin:0">Contact</h2>
+            <div class="small-muted" style="margin-top:6px">Click to copy any contact</div>
+          </div>
+          <div style="text-align:right">
+            <button class="download" id="downloadBtn" title="Download quick CV">Download CV</button>
+          </div>
+        </div>
 
-    <div class="card">
-      <h3>SSC</h3>
-      <p>Cantonment Board High School</p>
-      <p><strong>GPA:</strong> 4.78</p>
-      <p><strong>Years:</strong> 2018–2020</p>
-    </div>
+        <div class="contact-line" style="margin-top:12px">
+          <div class="contact-left">
+            <div class="contact-label">Email</div>
+            <div class="contact-item">
+              <div class="contact-value" id="emailText">maruf.27oct2004@gmail.com</div>
+            </div>
+          </div>
+          <div>
+            <button class="copy-btn" data-copy="maruf.27oct2004@gmail.com" title="Copy email">Copy</button>
+          </div>
+        </div>
+
+        <div class="contact-line">
+          <div class="contact-left">
+            <div class="contact-label">Phone</div>
+            <div class="contact-item">
+              <div class="contact-value" id="phoneText">01969682036</div>
+            </div>
+          </div>
+          <div>
+            <button class="copy-btn" data-copy="01969682036" title="Copy phone">Copy</button>
+          </div>
+        </div>
+
+        <div class="contact-line">
+          <div class="contact-left">
+            <div class="contact-label">Address</div>
+            <div class="contact-item">
+              <div class="contact-value" id="addrText">153/1, North Vasantek, Dhaka Cantonment, Dhaka</div>
+            </div>
+          </div>
+          <div>
+            <button class="copy-btn" data-copy="153/1, North Vasantek, Dhaka Cantonment, Dhaka" title="Copy address">Copy</button>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="sec-head"><h2 style="font-size:15px;margin:0">Skills</h2><div class="sec-sub">Technical highlights</div></div>
+          <div class="skills" id="skillList" style="margin-top:10px">
+            <!-- populated by JS -->
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="sec-head"><h2 style="font-size:15px;margin:0">References</h2><div class="sec-sub">Trusted contacts</div></div>
+          <div style="margin-top:10px">
+            <div style="font-weight:800">Dr. Feroz Ahmed</div>
+            <div class="small-muted">Professor, Dept. of EEE, IUB — fahmed@iub.edu.bd</div>
+            <div style="height:10px"></div>
+            <div style="font-weight:800">Dr. Kafiul Islam</div>
+            <div class="small-muted">Associate Professor, Dept. of EEE, IUB — kafiul_islam@iub.edu.bd</div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <button class="copy-btn" id="openLinkedIn" title="Open LinkedIn">Open LinkedIn</button>
+          <button class="copy-btn" id="openRG" title="Open ResearchGate">ResearchGate</button>
+        </div>
+      </div>
+    </aside>
   </div>
-</section>
 
-<!-- EXPERIENCE -->
-<section>
-  <h2>Experience</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Research Assistant</h3>
-      <p><strong>Supervisor:</strong> Dr. Feroz Ahmed</p>
-      <p>PPG Heart Monitoring, Smart Energy System, Car Tracking System</p>
-      <p><strong>2025 – Present</strong></p>
-    </div>
+  <!-- Floating action for mobile/quick -->
+  <button class="fab" id="fabDownload" title="Download CV (D)">CV</button>
 
-    <div class="card">
-      <h3>Teaching Assistant</h3>
-      <p>Electronics-I (EEE221)</p>
-      <p><strong>2025</strong></p>
-    </div>
+<script>
+  // ---------- DATA (ONLY from CV files) ----------
+  const DATA = {
+    name: "Md Abdullah Ibna Al Kader Maruf",
+    title: "Undergraduate — Electrical & Electronic Engineering",
+    email: "maruf.27oct2004@gmail.com",
+    phone: "01969682036",
+    address: "153/1, North Vasantek, Dhaka Cantonment, Dhaka",
+    linkedIn: "https://www.linkedin.com/in/abdullah-ibna-al-kader-maruf",
+    researchGate: "https://www.researchgate.net/profile/Md-Abdullah-Ibna-Al-Kader-Maruf",
+    skills: [
+      "AI Model Building", "IoT System Design", "Python", "C++", "Java",
+      "Signal Processing", "PCB Design", "3D Design & Printing",
+      "Mobile App Dev", "Server & Web Hosting"
+    ],
+    education: [
+      {title:"BSc — EEE", inst:"Independent University, Bangladesh", years:"2024 - 2028", cgpa:"3.81 (58 credits)"},
+      {title:"HSC", inst:"Cantonment Public School & College", years:"2020 - 2022", gpa:"5.00"},
+      {title:"SSC", inst:"Cantonment Board High School", years:"2018 - 2020", gpa:"4.78"}
+    ],
+    projects: [
+      "PPG-based Smart Heart Monitoring", "Smart Energy Monitoring System", "Smart Car Tracking System"
+    ],
+    experiences: [
+      {role:"Research Assistant — Dr. Feroz Ahmed", period:"Mar 2025 – Present"},
+      {role:"Teaching Assistant — Electronics-I (EEE221)", period:"May 2025 – Dec 2025"},
+      {role:"Campus Job — Library (SoD)", period:"Jan 2025 – Dec 2025"}
+    ]
+  };
 
-    <div class="card">
-      <h3>Campus Job (Library)</h3>
-      <p>School of Engineering Management</p>
-      <p><strong>2025</strong></p>
-    </div>
-  </div>
-</section>
+  // ---------- populate skills dynamically ----------
+  (function fillSkills(){
+    const wrap = document.getElementById('skillList');
+    DATA.skills.forEach(s=>{
+      const el = document.createElement('div');
+      el.className = 'skill';
+      el.textContent = s;
+      wrap.appendChild(el);
+    });
+  })();
 
-<!-- PROJECTS -->
-<section>
-  <h2>Projects</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>PPG Based Heart Monitoring System</h3>
-      <p>Heart rate • Pulse • Glucose detection • Dengue detection</p>
-    </div>
+  // ---------- copy buttons ----------
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click', async (ev)=>{
+      const text = btn.dataset.copy || (btn.id === 'openLinkedIn' ? DATA.linkedIn : (btn.id === 'openRG' ? DATA.researchGate : ''));
+      if(btn.id === 'openLinkedIn'){
+        window.open(DATA.linkedIn, '_blank', 'noopener');
+        return;
+      }
+      if(btn.id === 'openRG'){
+        window.open(DATA.researchGate, '_blank', 'noopener');
+        return;
+      }
+      try{
+        await navigator.clipboard.writeText(text);
+        showToast('Copied: ' + text);
+      }catch(e){
+        // fallback prompt
+        prompt('Copy this:', text);
+      }
+    });
+  });
 
-    <div class="card">
-      <h3>Smart Energy Monitoring</h3>
-      <p>Remote power, voltage, current, PF & cost calculation</p>
-    </div>
+  // helper toast
+  function showToast(msg){
+    const t = document.createElement('div');
+    t.textContent = msg;
+    t.style.position = 'fixed';
+    t.style.right = '20px';
+    t.style.bottom = '90px';
+    t.style.background = 'rgba(6,182,212,0.12)';
+    t.style.color = '#dff8fb';
+    t.style.padding = '10px 12px';
+    t.style.borderRadius = '10px';
+    t.style.backdropFilter = 'blur(6px)';
+    t.style.zIndex = 9999;
+    document.body.appendChild(t);
+    setTimeout(()=>{ t.style.transition='opacity 0.3s'; t.style.opacity=0; setTimeout(()=>t.remove(),300); },1400);
+  }
 
-    <div class="card">
-      <h3>Smart Car Tracking System</h3>
-      <p>Real-time live video + GPS safety tracking</p>
-    </div>
-  </div>
-</section>
+  // ---------- download CV (client-side quick export) ----------
+  function buildPlainCV(){
+    const lines=[];
+    lines.push(DATA.name);
+    lines.push(DATA.title);
+    lines.push('');
+    lines.push('Contact: ' + DATA.email + ' | ' + DATA.phone);
+    lines.push('Address: ' + DATA.address);
+    lines.push('');
+    lines.push('Education:');
+    DATA.education.forEach(e=> lines.push('- ' + e.title + ' | ' + e.inst + ' | ' + e.years + (e.cgpa ? ' | ' + e.cgpa : '')));
+    lines.push('');
+    lines.push('Experience:');
+    DATA.experiences.forEach(x=> lines.push('- ' + x.role + ' | ' + x.period));
+    lines.push('');
+    lines.push('Projects:');
+    DATA.projects.forEach(p=> lines.push('- ' + p));
+    lines.push('');
+    lines.push('Skills: ' + DATA.skills.join(', '));
+    return lines.join('\\n');
+  }
 
-<!-- SKILLS -->
-<section>
-  <h2>Skills</h2>
-  <div class="tags">
-    <div class="tag">AI Model Development</div>
-    <div class="tag">IoT System Design</div>
-    <div class="tag">Python</div>
-    <div class="tag">C++</div>
-    <div class="tag">Java</div>
-    <div class="tag">PCB Design</div>
-    <div class="tag">3D Design & Printing</div>
-    <div class="tag">Signal Processing</div>
-    <div class="tag">Mobile App Development</div>
-    <div class="tag">Web Hosting</div>
-  </div>
-</section>
+  document.getElementById('downloadBtn').addEventListener('click', ()=>{
+    const txt = buildPlainCV();
+    const blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'Md_Abdullah_CV.txt';
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  });
+  document.getElementById('fabDownload').addEventListener('click', ()=>{
+    document.getElementById('downloadBtn').click();
+  });
 
-<!-- CERTIFICATIONS -->
-<section>
-  <h2>Certifications</h2>
-  <ul style="color:#c9d1d9; padding-left:20px;">
-    <li>Electronics-I Best Project — 1st Place</li>
-    <li>IEEE Innovation Fest — Best Volunteer Award</li>
-    <li>RC Car Competition — 3rd Place</li>
-    <li>BTEB — Computer Office Application (A+)</li>
-    <li>UN & UNICEF Online Certifications</li>
-    <li>Kaggle Python • W3Schools Java • W3Schools C++</li>
-  </ul>
-</section>
+  // keyboard shortcut 'D' to download
+  document.addEventListener('keydown', (e)=>{
+    if(e.key && e.key.toLowerCase() === 'd'){ document.getElementById('downloadBtn').click(); }
+  });
 
-<!-- EXTRACURRICULAR -->
-<section>
-  <h2>Extracurricular Activities</h2>
-  <ul style="color:#c9d1d9; padding-left:20px;">
-    <li>IEEE IUB Student Branch (Event Coordinator)</li>
-    <li>IUB Debate Club</li>
-    <li>Independent Photography Club</li>
-    <li>Duke of Edinburgh — Gold Awardee</li>
-    <li>IUB Rover Scout Group</li>
-  </ul>
-</section>
+  // ---------- image fallback (initials) ----------
+  function imgFallback(){
+    const wrap = document.getElementById('photoWrap');
+    wrap.innerHTML = '';
+    const fallback = document.createElement('div');
+    fallback.className = 'avatar-fallback';
+    fallback.textContent = 'MA';
+    wrap.appendChild(fallback);
+  }
 
-<!-- REFERENCES -->
-<section>
-  <h2>References</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Dr. Feroz Ahmed</h3>
-      <p>Professor, Dept. of EEE, IUB</p>
-      <p>Email: fahmed@iub.edu.bd</p>
-    </div>
+  // Accessibility: if image loads ok, add alt title
+  document.getElementById('profileImg').addEventListener('load', function(){
+    // slight reveal animation
+    this.style.transition = 'transform 0.6s cubic-bezier(.2,.9,.2,1)';
+    this.style.transform = 'scale(1.02)';
+    setTimeout(()=> this.style.transform = 'none', 600);
+  });
 
-    <div class="card">
-      <h3>Dr. Kafiul Islam</h3>
-      <p>Associate Professor, Dept. of EEE, IUB</p>
-      <p>Email: kafiul_islam@iub.edu.bd</p>
-    </div>
-  </div>
-</section>
+  // Optionally: pre-check if pic.jpg exists by trying to fetch HEAD (best-effort; avoid CORS errors on GitHub raw)
+  // We rely on the onerror fallback above instead.
 
-</div>
-
-<footer>
-  © 2025 — Md Abdullah · CV Portfolio
-</footer>
-
+  // ensure copy buttons for static contact values also work when user clicks the text
+  document.getElementById('emailText').addEventListener('click', ()=> navigator.clipboard.writeText(DATA.email).then(()=>showToast('Copied email')));
+  document.getElementById('phoneText').addEventListener('click', ()=> navigator.clipboard.writeText(DATA.phone).then(()=>showToast('Copied phone')));
+  document.getElementById('addrText').addEventListener('click', ()=> navigator.clipboard.writeText(DATA.address).then(()=>showToast('Copied address')));
+</script>
 </body>
 </html>
