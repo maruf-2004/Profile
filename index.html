@@ -1,0 +1,110 @@
+<!--
+Simple personal website file. Save this as index.html in a GitHub repository and enable GitHub Pages to publish.
+
+How to publish on GitHub Pages (quick):
+1. Create a new GitHub repository (e.g., jawad-website).
+2. Add this file as index.html in the repository root and commit.
+3. Go to the repository Settings > Pages (or Settings > Pages & branches) and select the branch (main) and folder (root) to publish. Save.
+4. After a minute, your site will be available at https://<your-github-username>.github.io/<repository-name>/  (or at https://<your-github-username>.github.io/ if repo named <username>.github.io).
+
+That's it — no backend needed. You can edit this file and push updates to change the site.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jawad Shahriar — Profile</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071024 0%, #0b1220 100%);color: #e6eef6}
+    .card{width:min(720px,94vw);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:28px;box-shadow:0 8px 30px rgba(2,6,23,0.6);backdrop-filter:blur(6px)}
+    header{display:flex;gap:18px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:#021124}
+    h1{margin:0;font-size:28px}
+    .meta{color:var(--muted);margin-top:6px}
+    .grid{display:grid;grid-template-columns:1fr 220px;gap:20px;margin-top:22px}
+    .info{line-height:1.6}
+    .label{font-weight:600;color:var(--muted);font-size:13px}
+    .value{font-size:18px;margin-top:6px}
+    .actions{display:flex;flex-direction:column;gap:10px}
+    button{padding:10px 12px;border-radius:10px;border:0;background:var(--glass);color:inherit;cursor:pointer;font-weight:600}
+    .copy{display:flex;gap:8px;align-items:center}
+    footer{margin-top:20px;color:var(--muted);font-size:13px}
+    a.link{color:var(--accent);text-decoration:none}
+    @media (max-width:680px){.grid{grid-template-columns:1fr}
+      .actions{flex-direction:row;justify-content:space-between}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <header>
+      <div class="avatar">JS</div>
+      <div>
+        <h1>Jawad Shahriar</h1>
+        <div class="meta">Personal profile page</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="info">
+        <div>
+          <div class="label">Full name</div>
+          <div class="value">Jawad Shahriar</div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="label">ID</div>
+          <div class="value">2222313</div>
+        </div>
+
+        <div style="margin-top:18px">
+          <div class="label">About</div>
+          <div class="value">This is a minimal static page showing basic personal information. You can customize it, add links, a photo, or sections like education and contact.</div>
+        </div>
+
+        <footer>
+          Tip: edit this file (index.html) in your repo to update the site instantly.
+        </footer>
+      </section>
+
+      <aside class="actions">
+        <div class="copy">
+          <div style="flex:1">
+            <div class="label">Quick copy</div>
+            <div class="value" id="idText">ID: 2222313</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
+          <button id="copyBtn">Copy ID</button>
+          <button id="downloadBtn">Download vCard</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    // Copy ID to clipboard
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText('2222313');
+        alert('ID copied to clipboard');
+      }catch(e){
+        prompt('Copy this ID:', '2222313');
+      }
+    });
+
+    // Generate and download a simple vCard
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Jawad Shahriar\nNOTE:ID=2222313\nEND:VCARD`;
+      const blob = new Blob([vcard], {type: 'text/vcard'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'jawad_shahriar.vcf'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
